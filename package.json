@@ -1,0 +1,20 @@
+{
+	"name": "hiapu",
+	"description": "Heaven is a Parallel Universe",
+	"version": "0.0.1",
+	"private": true,
+	"dependencies": {
+		"express": "4.9.4",
+		"compression": "1.1.0",
+		"serve-static": "1.6.2",
+		"jade": "1.7.0",
+		"markdown": "0.5.0",
+		"bootstrap": "3.2.0",
+		"mongodb": "*",
+		"monk": "*",
+		"serve-favicon": "*",
+		"morgan": "*",
+		"cookie-parser": "*",
+		"body-parser": "*"
+	}
+}

@@ -1,0 +1,23 @@
+doctype html
+
+html
+	head
+		title= title
+		link(rel='stylesheet', href='css/bootstrap.min.css')
+	body
+		.container-fluid
+			.row
+				.col-md-12
+					h1= title
+					form#enterData(name = 'enterdata', method = 'post', action = '/')
+						input#dataField(type = 'text', placeholder = 'NORTH', name = 'data')
+						button#submit(type = 'submit') Enter data
+					
+					h2 The story so far...
+					ul
+						each out in output
+							li
+								div= out.data
+		
+		script(src='js/bootstrap.min.js')
+		script(src='js/markdown.js')
