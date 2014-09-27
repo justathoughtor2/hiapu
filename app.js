@@ -1,3 +1,5 @@
+/*jslint devel: true, node: true*/
+
 // Express
 var express = require('express');
 var app = express();
@@ -19,7 +21,7 @@ var routes = require('./routes/index');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-// app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
