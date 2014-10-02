@@ -1,21 +1,34 @@
 /*jslint devel: true, node: true*/
 var express = require('express');
-var router = express.Router();
+
+// Mongoose
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 // GET home page
-router.get('/', function(req, res) {
+exports.listUsers = function(req, res) {
 	var db = req.db;
-	var collection = db.get('datacollection');
-	collection.find({}, {}, function(e, docs) {
-		res.render('index', {
-			'title': 'Heaven is a Parallel Universe',
-			'output': docs
-		});
+	console.log(req.db);
+
+	db.User.collection.find({user: {$in: [/.*/]}}, function(err, docs) {
+		if(docs.length) {
+			res.render('index', {
+				'title': 'Heaven is a Parallel Universe',
+				'username': docs.each(function(err, doc) {
+					return doc.user;
+				})
+			});
+		}
+		else {
+			res.render('index', {
+				'title': 'Heaven is a Parallel Universe'
+			});
+		}
 	});
-});
+};
 
 // POST data entry
-router.post('/', function(req, res) {
+/*router.post('/', function(req, res) {
 	// Set internal DB variable
 	var db = req.db;
 	
@@ -23,11 +36,12 @@ router.post('/', function(req, res) {
 	var data = req.body.data;
 	
 	// Set collection
-	var collection = db.get('datacollection');
+	var collection = db.get('User');
 	
 	// Submit to DB
 	collection.insert({
-		'data': data
+		'location': 'LAB',
+        'action': data
 	}, function(err, doc) {
 		if(err) {
 			// Return error
@@ -38,6 +52,7 @@ router.post('/', function(req, res) {
 			res.redirect('/');
 		}
 	});
+	db.close();
 });
 
-module.exports = router;
+module.exports = router;*/

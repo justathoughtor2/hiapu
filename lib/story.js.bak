@@ -1,0 +1,44 @@
+/*jslint devel: true, node: true*/
+var express = require('express');
+
+module.exports = function(docs) {
+	docs.rewind();
+	docs.each(function(doc) {
+		if(doc === null) {
+			return 'There is nothing here.';
+		}
+		
+		var actionNum = 0;
+		if(doc == 'LOOK') {
+			actionNum = 0;
+		}
+		else {
+			actionNum = 1;
+		}
+
+		var locationNum = 0;
+		if(doc.location == 'LAB') {
+			locationNum = 0;
+		}
+		else {
+			locationNum = 1;
+		}
+
+		switch(locationNum) {
+			case 0: {
+				switch(actionNum) {
+					case 0: {
+						return 'You are in a LAB. It is a sparsely furnished room with very little in the manner of decor.';
+					}
+					default: {
+						return 'There is no response.';
+					}
+				}
+				break;
+			}
+			default: {
+				return 'There is no response from the void.';
+			}
+		}
+	});
+};

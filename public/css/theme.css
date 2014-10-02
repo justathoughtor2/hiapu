@@ -1,0 +1,6 @@
+input[name = 'username'], input[name = 'password'] {
+	position: relative;
+	width: 33%;
+	margin-top: .5%;
+	margin-bottom: .5%;
+}

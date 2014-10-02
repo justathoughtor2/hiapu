@@ -3,21 +3,25 @@ doctype html
 html
 	head
 		title= title
-		link(rel='stylesheet', href='css/bootstrap.min.css')
+		link(rel = 'stylesheet', href = 'css/bootstrap.min.css')
+		link(rel = 'stylesheet', href = 'css/theme.css')
 	body
 		.container-fluid
 			.row
 				.col-md-12
 					h1= title
-					form#enterData(name = 'enterdata', method = 'post', action = '/')
-						input#dataField(type = 'text', placeholder = 'NORTH', name = 'data')
-						button#submit(type = 'submit') Enter data
+					form#enterUserData(name = 'enteruserdata', method = 'post', action = '/', class='form-group')
+						.form-group
+							input#usernameField(type = 'text', placeholder = 'username', name = 'username', class = 'form-control')
+							input#passwordField(type = 'password', placeholder = 'password', name = 'password', class = 'form-control')
+							button#submit(type = 'submit', class = 'btn btn-default') Enter identification
 					
-					h2 The story so far...
+					h2 Denizens of the netherverse...
 					ul
-						each out in output
-							li
-								div= out.data
+						if username
+							each user in username
+								div= user
+                                
 		
 		script(src='js/bootstrap.min.js')
 		script(src='js/markdown.js')
